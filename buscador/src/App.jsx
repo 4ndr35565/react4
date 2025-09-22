@@ -5,8 +5,10 @@ import "react-toastify/dist/ReactToastify.css";
 import SearchInput from "./components/Searchinput";
 import Card from "./components/Card";
 import Modal from "./components/modal";
+import {useAuth} from "./context/AuthContext";
 
 export default function App() {
+  const {logout} = useAuth();
   const [usuarios, setUsuarios] = useState([]);
   const [filtrados, setFiltrados] = useState([]);
   const [error, setError] = useState(null);
@@ -56,6 +58,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 space-y-4">
+      <button className="bg-red-500 text-white px-4 py-2 rounded float-rigth" onClick={logout}> 
+      LOGOUT</button>
+    
+    <div className="min-h-screen bg-gray-100 p-8 space-y-4">
       <h1 className="text-3xl font-bold text-center mb-4">
         Buscador de Usuarios
       </h1>
@@ -90,6 +96,7 @@ export default function App() {
       )}
 
       <ToastContainer />
+    </div>
     </div>
   );
 }
